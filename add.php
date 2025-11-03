@@ -25,10 +25,6 @@
                         echo "<font color='red'>Phone field is empty.</font><br/>";
                 }
 
-                // if (empty($designation)) {
-                //      echo "<font color='red'>Designation field is empty.</font><br/>";
-                // }
-
                 //link to the previous page
                 echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
         } else {
@@ -64,4 +60,3 @@
 </body>
 
 </html>
-
