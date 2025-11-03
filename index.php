@@ -11,11 +11,12 @@ $result = $dbConn->query("SELECT * FROM employees ORDER BY id DESC");
 <head>
     <title>Home Page</title>
 </head>
+<link rel="stylesheet" href="app.css" />
 
 <body>
     <a href="add.html">Add New Data</a><br /><br />
 
-    <table width='80%' border=0>
+    <table class="container" width='80%' border=0>
 
         <tr bgcolor='#CCCCCC'>
             <td>ID</td>
