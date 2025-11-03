@@ -1,32 +1,33 @@
 <html>
 
 <head>
-	<title>Add Data</title>
+    <title>Add Data</title>
 </head>
 
 <body>
-	<?php
+    <?php
 	//including the database connection file
 	include_once("config.php");
 
-	$name = $_REQUEST['name'];
-	$age = $_REQUEST['age'];
-	$email = $_REQUEST['email'];
+	$name = $_POST['name'] ?? '';
+	// $name = $_REQUEST['name'];
+	$phone = $_POST['phone']?? '';
+	$designation = $_POST['designation']?? '';
 
 	// checking empty fields
-	if (empty($name) || empty($age) || empty($email)) {
+	if (empty($name) || empty($phone)) {
 
 		if (empty($name)) {
 			echo "<font color='red'>Name field is empty.</font><br/>";
 		}
 
-		if (empty($age)) {
-			echo "<font color='red'>Age field is empty.</font><br/>";
+		if (empty($phone)) {
+			echo "<font color='red'>Phone field is empty.</font><br/>";
 		}
 
-		if (empty($email)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
-		}
+		// if (empty($designation)) {
+		// 	echo "<font color='red'>Designation field is empty.</font><br/>";
+		// }
 
 		//link to the previous page
 		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
@@ -34,8 +35,12 @@
 		// if all the fields are filled (not empty) 
 
 		//insert data to database		
-		$sql = "INSERT INTO users (name, age, email) VALUES ('$name', '$age', '$email')";
-		$dbConn->exec($sql);
+		$sql = "INSERT INTO employees (name, phone, designation) VALUES ('$name', '$phone', '$designation')";
+
+		$stmt = $dbConn->prepare($sql);
+
+  		// execute the query
+  		$stmt->execute();
 
 		//display success message
 		echo "<font color='green'>Data added successfully.";

@@ -6,8 +6,11 @@ include("config.php");
 $id = $_GET['id'];
 
 //deleting the row from table
-$sql = "SELECT FROM users WHERE id = $id";
-$dbConn->exec($sql);
+$sql = "DELETE FROM employees WHERE id = $id";
+$stmt = $dbConn->prepare($sql);
+
+// execute the query
+$stmt->execute();
 
 //redirecting to the display page (index.php in our case)
 header("Location:index.php");
